@@ -179,9 +179,30 @@ public class Generator {
 			
 			
 		}
-		
-		
+
+		randomHoles();
 		return lab;
+	}
+	
+	public void randomHoles() {
+		int max = (int)(lab.length/25+7);
+		
+		for (int i = 1; i < lab.length-1; i++) {
+			for (int j = 1; j < lab.length-1; j++) {
+				if(lab[i][j]==2) {
+					if(Math.random()*100 <= 2) {
+						max--;
+						lab[i][j] = 1;
+						
+						
+					}
+					if(max <= 0) {
+						System.out.println("generated " + ((int)lab.length/10+7) + " holes");
+						return;
+					}
+				}
+			}
+		}
 	}
 
 	public Integer[] randomizelist() {
